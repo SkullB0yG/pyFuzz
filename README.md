@@ -1,4 +1,4 @@
-```markdown
+markdown
 # pyFuzz - Web Directory Fuzzing Tool 🔍
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
