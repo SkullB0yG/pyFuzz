@@ -39,19 +39,21 @@ def Librarian(path):
 def ExtensionHandler(url, dictionary, exe):
     
     filewithexe=[]
-    
-    if exe == False:
-        for word in dictionary:
-           formating = f'{url}{word}'
-           filewithexe.append(formating)
-        return filewithexe
-    else:
+    try:
+        if exe == False:
+            for word in dictionary:
+               formating = f'{url}{word}'
+               filewithexe.append(formating)
+            return filewithexe
+        else:
 
-        for word in dictionary:
-            for e in exe:
-                formating = f'{url}{word}{e}'
-                filewithexe.append(formating)
-        return filewithexe
+            for word in dictionary:
+                for e in exe:
+                    formating = f'{url}{word}{e}'
+                    filewithexe.append(formating)
+            return filewithexe
+    except NoneType as n:
+        print(f'Error: {n}')
 
 
 def help():
@@ -63,6 +65,7 @@ def help():
 
 
 try:
+
     if sys.argv[1] == '-h'or sys.argv[1] == '--help':
         help()
     elif len(sys.argv[1]) > 0 and len(sys.argv[2]) > 0 and len(sys.argv[3:]) > 0:
@@ -78,6 +81,7 @@ try:
             if response.status_code == 404:
                 pass
             else:
+
                 if response.status_code in range(301,304) or response.status_code == 403: 
                     print(Fore.YELLOW + output)
                 else:
@@ -87,19 +91,26 @@ try:
         # funcion que haga algo con el parametros --url --wordlist
 
         urlquery=ExtensionHandler(url=sys.argv[1], dictionary=Librarian( path=sys.argv[2]), exe=False)
+
         for url in urlquery:
             response=requests.get(url, timeout=5, allow_redirects = False)
+            output=f'{url} ==> (Status Code: {response.status_code})'
 
             if response.status_code == 404:
                 pass
             else:
-                 print(f'{url} ==> (Status Code: {response.status_code})')
+
+                if response.status_code in range(301, 304) or response.status_code == 403:
+                    print(Fore.YELLOW + output)
+                else:
+
+                    print(Fore.GREEN + output)
 except ConnectionError:
+
     stderr=f'[!] server connection error'
     print(Back.RED + stderr)
+
 except KeyboardInterrupt:
+
     exitout=f'exit'
     print('\n',Style.BRIGHT + Fore.RED + exitout)
-
-
-
