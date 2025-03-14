@@ -53,19 +53,19 @@ markdown
 - **Detección de rutas**: Combina la URL con entradas de la wordlist.
 - **Soporte para extensiones**: Añade extensiones personalizadas a las rutas.
 - **Resultados coloreados**:
-  - 🟢 **Verde**: Códigos `200`, `403`, etc. (éxito o acceso denegado).
-  - 🟡 **Amarillo**: Redirecciones (`301`, `302`, `303`).
-  - ⚪ **Ignorado**: Respuestas `404` (no se muestran).
+  - **Verde**: Códigos `200`, `403`, etc. (éxito o acceso denegado).
+  - **Amarillo**: Redirecciones (`301`, `302`, `303`).
+  - **Ignorado**: Respuestas `404` (no se muestran).
 - **Manejo de errores**: Detecta problemas de conexión, permisos o archivos inválidos.
 
 ---
 
 ## Notas 
-- ✅ Asegúrate de que la URL termine con `/` si buscas subdirectorios (ej: `http://sitio.com/admin/`).
-- 🔧 Utiliza wordlists adecuadas para el contexto:
+-  Asegúrate de que la URL termine con `/` si buscas subdirectorios (ej: `http://sitio.com/admin/`).
+-  Utiliza wordlists adecuadas para el contexto:
   - `common.txt` para directorios.
   - `raft-small-words.txt` para archivos.
-- ⚠️ Agrega extensiones comunes (ej: `.php`, `.json`) para aumentar la efectividad.
+-  Agrega extensiones comunes (ej: `.php`, `.json`) para aumentar la efectividad.
 
 ---
 
